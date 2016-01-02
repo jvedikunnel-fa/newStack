@@ -1,4 +1,4 @@
-package com.vedikunnel.tapestry.services;
+package com.vedikunnel.web.services;
 
 import org.apache.tapestry5.services.URLEncoder;
 

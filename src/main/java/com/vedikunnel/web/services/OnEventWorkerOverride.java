@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.vedikunnel.tapestry.services;
+package com.vedikunnel.web.services;
 
 import org.apache.tapestry5.ComponentResources;
 import org.apache.tapestry5.EventContext;

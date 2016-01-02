@@ -30,3 +30,4 @@ tmp/
 
 docs/
 target/
+src/main/filters/git.properties

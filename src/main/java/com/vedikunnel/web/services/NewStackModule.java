@@ -1,15 +1,19 @@
-package com.vedikunnel.tapestry.services;
+package com.vedikunnel.web.services;
 
+import com.vedikunnel.web.rest.NewStackRestModule;
+import com.vedikunnel.web.services.filters.TimingFilter;
 import org.apache.tapestry5.SymbolConstants;
 import org.apache.tapestry5.ioc.MappedConfiguration;
 import org.apache.tapestry5.ioc.OrderedConfiguration;
 import org.apache.tapestry5.ioc.ServiceBinder;
 import org.apache.tapestry5.ioc.annotations.Contribute;
 import org.apache.tapestry5.ioc.annotations.InjectService;
+import org.apache.tapestry5.ioc.annotations.SubModule;
 import org.apache.tapestry5.ioc.services.ApplicationDefaults;
 import org.apache.tapestry5.ioc.services.ServiceOverride;
 import org.apache.tapestry5.ioc.services.SymbolProvider;
 import org.apache.tapestry5.services.ComponentClassResolver;
+import org.apache.tapestry5.services.RequestFilter;
 import org.apache.tapestry5.services.URLEncoder;
 import org.apache.tapestry5.services.ValueEncoderSource;
 import org.apache.tapestry5.services.meta.MetaWorker;
@@ -20,12 +24,11 @@ import static org.apache.tapestry5.SymbolConstants.APPLICATION_VERSION;
 import static org.apache.tapestry5.SymbolConstants.ENCODE_LOCALE_INTO_PATH;
 import static org.apache.tapestry5.SymbolConstants.SUPPORTED_LOCALES;
 
-/**
- * Created by June on 02/01/2016.
- */
+@SubModule(NewStackRestModule.class)
 public class NewStackModule {
 
     public static void bind(ServiceBinder binder) {
+        binder.bind(RequestFilter.class, TimingFilter.class).withId("NewStackTimingFilter");
         binder.bind(NewStackProperties.class);
     }
 
@@ -64,4 +67,9 @@ public class NewStackModule {
         configuration.add(ENCODE_LOCALE_INTO_PATH, FALSE.toString());
         configuration.add(APPLICATION_VERSION, newStackProperties.getVersion());
     }
+
+    public static void contributeRequestHandler(OrderedConfiguration<RequestFilter> configuration, @InjectService("NewStackTimingFilter") RequestFilter timingFilter) {
+        configuration.add("Timing", timingFilter, "after:CheckForUpdates");
+    }
+
 }

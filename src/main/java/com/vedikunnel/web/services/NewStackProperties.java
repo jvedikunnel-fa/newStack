@@ -1,4 +1,4 @@
-package com.vedikunnel.tapestry.services;
+package com.vedikunnel.web.services;
 
 import java.io.IOException;
 import java.util.Properties;
