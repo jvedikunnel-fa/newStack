@@ -1,0 +1,25 @@
+<!-- Embedded Tomcat config file (for mvn tomcat:run) -->
+<Context reloadable="false" useHttpOnly="false">
+
+    <Manager pathname=""/>
+
+    <!--JarScanner className="org.apache.tomcat.util.scan.StandardJarScanner"
+                scanClassPath="false"/-->
+
+    <Resource factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+              name="jdbc/newstack" auth="Container"
+              type="javax.sql.DataSource"
+              initialSize="1" maxActive="20" minIdle="1" maxIdle="20" maxWait="10000"
+              username="${database.connection.username}"
+              password="${database.connection.password}"
+              driverClassName="com.mysql.jdbc.Driver"
+              url="${database.connection.url}"
+              validationQuery="SELECT 1"
+              testWhileIdle="true"
+              testOnBorrow="true"
+              testOnReturn="false"
+              validationInterval="30000"
+              timeBetweenEvictionRunsMillis="30000"
+              jmxEnabled="true"
+              defaultTransactionIsolation="READ_COMMITTED"/>
+</Context>

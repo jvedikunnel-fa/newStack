@@ -1,0 +1,56 @@
+{
+  "author": "Joseph Vedikunnel",
+  "name": "newStack",
+  "description": "Java Rest Api - Backbone.Marionette",
+  "version": "1.0.0",
+  "license": "CC-BY-NC-ND-4.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jvedikunnel/newStack.git"
+  },
+  "scripts": {
+    "test": "NODE_PATH=app:test-stub-modules mocha -R spec",
+    "testing": "NODE_PATH=app:test-stub-modules mocha -R spec -w",
+    "test-cov": "NODE_PATH=app:test-stub-modules mocha -r blanket -R html-cov > test/coverage.html"
+  },
+  "config": {
+    "blanket": {
+      "pattern": "app",
+      "data-cover-never": "node_modules"
+    }
+  },
+  "//": "Dep groups below: Brunch & plugins / Brunch production output / Dev server / Tests",
+  "devDependencies": {
+    "brunch": "^2.0.4",
+    "javascript-brunch": "^1.8.0",
+    "css-brunch": "^1.7.0",
+    "less-brunch": "^1.8.1",
+    "stylus-brunch": "^1.8.1",
+    "jade-brunch": "^1.8.2",
+    "appcache-brunch": "^1.7.1",
+    "clean-css-brunch": "^1.8.0",
+    "uglify-js-brunch": "^1.7.8",
+    "blanket-brunch": "^1.5.1",
+
+    "clean-css": "^3.4.8",
+    "uglify-js": "^2.6.1",
+
+    "chai": "^3.4.1",
+    "cheerio": "^0.17.0",
+    "blanket": "^1.2.1",
+    "mocha": "^2.3.4",
+    "sinon": "^1.17.2",
+    "sinon-chai": "^2.8.0",
+
+    "backbone": "1.2.3",
+    "backbone.marionette": "^2.4.4",
+    "jquery": "^2.1.4",
+
+    "body-parser": "^1.5.2",
+    "errorhandler": "^1.1.1",
+    "express": "^4.7.2",
+    "lowdb": "^0.3.1",
+    "morgan": "^1.2.2",
+    "socket.io": "1.1.0"
+  }
+}
